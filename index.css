@@ -1,3 +1,5 @@
+
+
 #main {
   display: flex;
   flex-direction: column;
@@ -8,11 +10,15 @@
   display: flex;
 }
 
+#main-heading{
+  color: rgb(94,201,241)
+}
+
 ul {
   list-style: none;
 }
 
 .avatar-img {
   width: 200px;
-  
+
 }

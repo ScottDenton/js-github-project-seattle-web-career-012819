@@ -1,10 +1,11 @@
+// ****** find all useful tags and add event listener to form *********
 const userList = document.getElementById('user-list')
 const repoList = document.getElementById('repos-list')
 const form = document.getElementById('github-form')
 const searchInput = document.getElementById('search')
 const searchCriteria = document.getElementById('search-criteria')
-
 form.addEventListener('submit', search)
+//*************************************************
 
 //check if user wants to search by username or repo name
 function search(e){
