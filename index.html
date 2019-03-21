@@ -4,7 +4,6 @@
   <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
   <meta http-equiv='X-UA-Compatible' content='ie=edge'/>
   <title>Document</title>
-  <script src='index.js'></script>
   <link rel='stylesheet' href='index.css'/>
 </head>
 <body>
@@ -14,6 +13,10 @@
 
     <form id='github-form'>
       <input id='search' type='text' name='search'>
+      <select id = "search-criteria">
+        <option value="user">User</option>
+        <option value="repo">Repo</option>
+      </select>
       <input type='submit' name='submit'/>
     </form>
 
@@ -30,4 +33,5 @@
   </div>
 
 </body>
+<script src='index.js'></script>
 </html>
