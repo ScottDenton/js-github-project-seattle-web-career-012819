@@ -6,18 +6,16 @@ const searchCriteria = document.getElementById('search-criteria')
 
 form.addEventListener('submit', search)
 
+//check if user wants to search by username or repo name
 function search(e){
   e.preventDefault();
-
-  if(searchCriteria.value == 'user' ){
-    fetchUsersByName()
-  } else {
-    fetchReposByName()
-  }
+  searchCriteria.value == 'user' ? fetchUsersByName() : fetchReposByName()
   userList.innerHTML = ''
   form.reset();
 }
+//***********************************************
 
+// ****** fetches based on search input *********
 function fetchUsersByName(e){
   let user = searchInput.value
   fetch(`https://api.github.com/search/users?q=${user}`)
@@ -35,12 +33,13 @@ function fetchReposByName(e){
   .then(resp => resp.json())
   .then(json => {
     json.items.forEach((repo) => {
-      // console.log(repo)
       displayRepo(repo)
     })
   })
 }
+//******************************************************
 
+// *******display info based on user choice *************
 function displayUser(user){
   let userLi = document.createElement('li')
   let username = document.createElement('h3')
@@ -48,7 +47,7 @@ function displayUser(user){
   let avatar = document.createElement('img')
   avatar.src = user.avatar_url
   avatar.classList.add('avatar-img')
-  avatar.addEventListener('click', () => fetchRepos(user))
+  avatar.addEventListener('click', () => fetchUsersRepos(user))
 
   let linkHolder = document.createElement('p')
   let link = document.createElement('a')
@@ -79,10 +78,12 @@ function displayRepo(repo){
   repoLi.appendChild(linkHolder)
 
   userList.appendChild(repoLi)
-
 }
+// ************************************************
 
-function fetchRepos(user){
+
+// ****** fetch an individual users repos and display them*************
+function fetchUsersRepos(user){
   repoList.innerHTML = ''
   fetch(`https://api.github.com/users/${user.login}/repos`)
   .then(resp => resp.json())
@@ -101,9 +102,7 @@ function renderRepos(repo){
   repoLink.textContent = repo.name
 
   repoLi.appendChild(repoLink)
-
   repoList.appendChild(repoLi)
 }
 
-
-//
+//***********************************************
