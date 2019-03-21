@@ -70,7 +70,7 @@ function displayRepo(repo){
   repoName.textContent = `Repo Name: ${repo.name}`
   let linkHolder = document.createElement('p')
   let link = document.createElement('a')
-  link.href = `https://github.com/${repo.owner.login}/${repo.full_name}`
+  link.href = `https://github.com/${repo.full_name}`
   link.target = 'blank'
   link.textContent = "View Repo on Github"
 
